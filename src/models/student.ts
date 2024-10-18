@@ -4,7 +4,7 @@ import { Student } from "../interfaces/student";
 
 // Obtener todos los alumnos
 export const findAllStudents = async (): Promise<Student[]> => {
-  const [rows] = await pool.query<RowDataPacket[]>("SELECT * FROM alumnos");
+  const [rows] = await pool.query<RowDataPacket[]>("SELECT * FROM students");
   return rows as Student[];
 };
 
@@ -79,7 +79,7 @@ export const updateStudent = async (
 };
 
 export const deleteStudent = async (id: number): Promise<number> => {
-  await pool.query<ResultSetHeader>("DELETE FROMA students WHERE id = ?", [id]);
+  await pool.query<ResultSetHeader>("DELETE FROM students WHERE id = ?", [id]);
 
   return id;
 };
